@@ -55,8 +55,18 @@ model.add(Dense(10,activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-model.fit(trainvals,trainlabels,batch_size=32,nb_epoch=10,verbose=0)
+model.fit(trainvals,trainlabels,batch_size=32,epochs=1,verbose=1)
 
 prediction=model.predict(testvals, batch_size=32, verbose=0)
+def maxval(row):
+    maxin=row[0]
+    j=0
+    for i in range(0,10):
+        if(row[i] > maxin):
+            maxin=row[i]
+            j=i
+    return j
+        
+newarr=np.apply_along_axis(maxval, 1, prediction)
 
-pd.DataFrame({'ImageId': list(range(len(predictions)+1)), 'Label': predictions}).to_csv('predictions.csv',index=False,header=True)
+pd.DataFrame({'ImageId': list(range(1,len(prediction)+1)), 'Label': newarr}).to_csv('predictions.csv',index=False,header=True)
