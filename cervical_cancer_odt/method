@@ -1,0 +1,6 @@
+Method followed:
+1.Pixel data of each image collected
+2.Bad images removed
+3.Training using:
+  i)SVM ii)Neural Network using Keras (SGD)
+4.Probability prediction
