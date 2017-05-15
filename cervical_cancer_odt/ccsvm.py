@@ -82,14 +82,6 @@ x_train, x_test, y_train, y_test = train_test_split(train_data, train_target, te
 clf = svm.SVC(kernel='linear', C=1, probability=True).fit(train_data, train_target)
 results = clf.predict_proba(test_data)
 
-#print(test_ids, results)
-#prob_per_class_dictionary = dict(zip(clf.classes_, results))
-
-"""
-alg.fit(iris[predictors],iris["NewSpecies"])
-predictions=alg.predict(iris_test[predictors])
-print(predictions)
-"""
 type1=results[:,0]
 type2=results[:,1]
 type3=results[:,2]
